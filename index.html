@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<title>Barcode Chart</title>
 <style>
 
 </style>
@@ -7,4 +8,8 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
   d3.select("body").style("background-color", "#111");
+
+  d3.json("data.json", function(data) {
+    console.log(data.automationData);
+  });
 </script>
