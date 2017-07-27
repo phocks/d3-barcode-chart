@@ -11,17 +11,20 @@
   const bodyEl = d3.select("body")
     .styles({
       "background-color": "#f9f9f9",
-      "color": "black"
+      // "color": "black"
     });
 
-  bodyEl.append("svg")
-    .attr("width", 50)
-    .attr("height", 50)
-    .append("circle")
-    .attr("cx", 25)
-    .attr("cy", 25)
-    .attr("r", 25)
-    .style("fill", "grey");
+  const svgEl = bodyEl.append("svg")
+    .attr("viewBox", "0 0 100 100");
+    // .attr("width", 200)
+    // .attr("height", 200);
+
+  svgEl.append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", 200)
+    .attr("height", 10)
+    .style("fill", "lightgrey");
 
 
   d3.json("data.json", function(data) {
