@@ -8,12 +8,20 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
 <script>
-  d3.select("body")
+  const bodyEl = d3.select("body")
     .styles({
       "background-color": "#f9f9f9",
       "color": "black"
-    })
-    .text("hello");
+    });
+
+  bodyEl.append("svg")
+    .attr("width", 50)
+    .attr("height", 50)
+    .append("circle")
+    .attr("cx", 25)
+    .attr("cy", 25)
+    .attr("r", 25)
+    .style("fill", "grey");
 
 
   d3.json("data.json", function(data) {
