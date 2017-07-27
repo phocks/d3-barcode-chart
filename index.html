@@ -20,28 +20,28 @@ const chartScale = d3.scaleLinear()
     .domain([0, 100])
     .range([0, chartWidth]);
 
-d3.json("data.json", function(data) {
+d3.json('data.json', function(data) {
     drawChart(data.data);
   });
 
 function drawChart(data) {
-  const svgEl = d3.select("svg")
+  const svgEl = d3.select('svg')
 
   barcodeGroup = svgEl.append('g')
-    // .attr("transform", "translate(20, 20)");
+    // .attr('transform', 'translate(20, 20)');
 
-  barcodeGroup.append("rect")
-    .attr("width", chartWidth)
-    .attr("height", chartHeight)
-    .style("fill", "#eee");
+  barcodeGroup.append('rect')
+    .attr('width', chartWidth)
+    .attr('height', chartHeight)
+    .style('fill', '#eee');
 
   barcodeGroup.selectAll('rect')
     .data(data)
     .enter()
     .append('rect')
-    .attr("width", barWidth)
-    .attr("height", chartHeight)
-    .style("fill", "rgba(0, 0, 0, 0.1)")
+    .attr('width', barWidth)
+    .attr('height', chartHeight)
+    .style('fill', 'rgba(0, 0, 0, 0.1)')
     .attr('x', function (d, i) {
       return chartScale(d.percent);
     });
