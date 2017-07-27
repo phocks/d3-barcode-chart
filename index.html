@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Barcode Chart</title>
-<style></style>
-<svg width="960" height="200"></svg>
+<style>
+body {
+  text-align: center;
+}
+svg {
+  margin: 75px auto;
+}
+</style>
+<svg width="400" height="25"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
-const chartWidth = 960,
-      chartHeight = 200,
+const chartWidth = 400,
+      chartHeight = 30,
       barWidth = chartWidth / 100;
 
 const chartScale = d3.scaleLinear()
