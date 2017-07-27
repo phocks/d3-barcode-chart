@@ -21,7 +21,7 @@ const chartScale = d3.scaleLinear()
     .range([0, chartWidth]);
 
 d3.json("data.json", function(data) {
-    drawChart(data.automationData);
+    drawChart(data.data);
   });
 
 function drawChart(data) {
@@ -43,7 +43,7 @@ function drawChart(data) {
     .attr("height", chartHeight)
     .style("fill", "rgba(0, 0, 0, 0.1)")
     .attr('x', function (d, i) {
-      return chartScale(d.percentLessSusceptible);
+      return chartScale(d.percent);
     });
 }
 </script>
