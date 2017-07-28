@@ -12,11 +12,16 @@ svg {
 <body></body>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
-const chartWidth = 400,
-      chartHeight = 24,
-      barWidth = 2; // chartWidth / 100;
+var chartWidth = 400,
+    chartHeight = 24,
+    barWidth = 2, // chartWidth / 100;
+    barColor = 'rgba(0, 0, 0, 0.1)';
 
-const chartScale = d3.scaleLinear()
+var highlightBarWidth = 3,
+    highlightBarHeight = 28;
+    highlightBarColor = 'rgba(0, 161, 230, 1.0)';
+
+var chartScale = d3.scaleLinear()
     .domain([0, 100])
     .range([0, chartWidth]);
 
@@ -25,7 +30,7 @@ d3.json('data.json', function(data) {
   });
 
 function drawChart(data) {
-  const svgEl = d3.select('body')
+  var svgEl = d3.select('body')
     .append('svg')
     .attr('width', chartWidth)
     .attr('height', chartHeight * 2);
@@ -44,9 +49,20 @@ function drawChart(data) {
     .append('rect')
     .attr('width', barWidth)
     .attr('height', chartHeight)
-    .style('fill', 'rgba(0, 0, 0, 0.1)')
+    .style('fill', barColor)
     .attr('x', function (d, i) {
       return Math.floor(chartScale(d.percent));
+    }).on('mouseover', function (d, i) {
+      barcodeGroup.append('rect')
+        .attr('width', highlightBarWidth)
+        .attr('height', highlightBarHeight)
+        .attr('transform', 'translate(0, ' + '-' + (highlightBarHeight - chartHeight) / 2 + ')')
+        .style('fill', highlightBarColor)
+        .attr('x', function () {
+          return Math.floor(chartScale(d.percent));
+        });
     });
+
+  
 }
 </script>
