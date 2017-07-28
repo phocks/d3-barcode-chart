@@ -31,7 +31,7 @@ function drawChart(data) {
     .attr('height', chartHeight * 2);
 
   barcodeGroup = svgEl.append('g')
-    .attr('transform', `translate(0, ${ chartHeight / 2 })`);
+    .attr('transform', 'translate(0, ' + chartHeight / 2 + ')');
 
   barcodeGroup.append('rect')
     .attr('width', chartWidth)
