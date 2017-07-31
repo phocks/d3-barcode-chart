@@ -52,8 +52,8 @@ function drawChart(data) {
     .style('fill', barColor)
     .attr('x', function (d, i) {
       return Math.floor(chartScale(d.percent));
-    }).on('mouseover', function (d, i) {
-      barcodeGroup.append('rect')
+    }).on('mouseenter', function (d, i) {
+      var highlightBar = barcodeGroup.append('rect')
         .attr('width', highlightBarWidth)
         .attr('height', highlightBarHeight)
         .attr('transform', 'translate(0, ' + '-' + (highlightBarHeight - chartHeight) / 2 + ')')
@@ -61,6 +61,8 @@ function drawChart(data) {
         .attr('x', function () {
           return Math.floor(chartScale(d.percent));
         });
+        setTimeout(function() { highlightBar.remove(); }, 700);
+        
     });
 }
 </script>
